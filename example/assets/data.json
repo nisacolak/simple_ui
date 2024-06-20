@@ -1,0 +1,15 @@
+{
+    "id":1,
+    "first_name":"Gill",
+    "last_name":"Perocci",
+    "email":"gperocci0@howstuffworks.com",
+    "gender":"Male",
+    "fullName":"Gill Perocci",
+    "education":"Kanagawa Dental College",
+    "job":"Actuary",
+    "image":"https://images.unsplash.com/photo-1622295023576-e4fb6e9e8ba2?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "date":"12/14/2023",
+    "price": "12$",
+    "offerSave":" save %10"
+    
+}

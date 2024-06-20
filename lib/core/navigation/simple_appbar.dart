@@ -14,7 +14,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget{
     return Padding(padding: EdgeInsets.symmetric(horizontal: 20),
     child: AppBar(automaticallyImplyLeading: false,
     leading: showBackArrow 
-    ? IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_left))
+    ? IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back))
     : leadingIcon != null ? IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon)) : null ,
     title: appBarText,
     actions: actions,
@@ -23,5 +23,6 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget{
   
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => throw UnimplementedError();
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  
 }

@@ -4,7 +4,10 @@ import 'package:simple_ui/core/styles/textstyle.dart';
 
 class CommentCard extends StatelessWidget {
  final Widget? child;
-  const CommentCard({super.key, this.child});
+ final String title;
+ final String description;
+ final String? footText;
+  const CommentCard({super.key, this.child, required this.title, required this.description, this.footText});
  
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ padding: EdgeInsets.all(10),
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Comment Name',
+                  title,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -34,17 +37,8 @@ padding: EdgeInsets.all(10),
                   height: MediaQuery.of(context).size.height * .04,
                   width: MediaQuery.of(context).size.width * .13,
                  
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text('5', style: SimpleTextStyle.titleSmall()),
-                       Icon(Icons.star, color: Colors.
-                      yellow, size: 18,),
-                       
-                       
-                    
-                    ],
-                  ),
+                  
+                  
                 ),
               ],
             ),
@@ -53,14 +47,15 @@ padding: EdgeInsets.all(10),
             height: MediaQuery.of(context).size.height * .001,
           ),
           Text(
-            "hsjdkhfsjkdhfk",
+            description,
             textAlign: TextAlign.left,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * .01,
           ),
+          if (child != null) 
           Container(
-              color: Colors.yellow,
+            
               height: MediaQuery.of(context).size.height * .06,
               width: MediaQuery.of(context).size.width * .55,
               child: child),
@@ -71,7 +66,7 @@ padding: EdgeInsets.all(10),
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-               Text("2 months ago", style: SimpleTextStyle.titleSmallLight())
+               Text(footText!, style: SimpleTextStyle.titleSmallLight())
               ],
             ),
             

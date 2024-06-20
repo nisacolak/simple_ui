@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:simple_ui/core/styles/color.dart';
+import 'package:simple_ui/core/styles/textstyle.dart';
 
 class SimpleButton extends StatelessWidget {
   final String text;
@@ -23,14 +25,14 @@ class SimpleButton extends StatelessWidget {
       width: width ?? MediaQuery.of(context).size.width * 0.70,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor,
+            backgroundColor: backgroundColor ?? SimpleColors.primary,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),
             ),
           ),
           onPressed: onPressed,
-          child: Text(text)),
+          child: Text(text, style: SimpleTextStyle.titleSmall(color: labelColor ?? SimpleColors.primaryBorder ), )),
     );
   }
 }
