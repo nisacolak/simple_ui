@@ -1,67 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class SimpleHorizontalList extends StatelessWidget {
-  final List model;
+
+class SimpleList extends StatelessWidget {
+
+  final String? imageData;
+  final Color tileColor;
+  final Color? textColor;
+  final Widget? trailing;
+  final Color? trailingColor;
+  final Widget? leading;
+  final String title;
+  final String subtitle;
   final VoidCallback? onPressed;
-  const SimpleHorizontalList({super.key, required this.model, this.onPressed});
+  final bool? value;
+  final Function(bool?)? valueOnChanged;
+  const SimpleList({super.key, this.onPressed,  this.trailing,  this.leading, this.value, this.valueOnChanged, required this.title, required this.subtitle, this.imageData, required this.tileColor, this.textColor, this.trailingColor});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 125,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: model.length,
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: onPressed,
-                child: Padding(
-                  padding: EdgeInsets.all(6),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.18,
-                        height: MediaQuery.of(context).size.height * 0.1,
-                        decoration: BoxDecoration(
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(
-                                  1,
-                                  2,
-                                ),
-                                blurRadius: 1,
-                                spreadRadius: 3.0,
-                              ), //BoxShadow
-                              BoxShadow(
-                                color: Colors.white,
-                                offset: Offset(0.0, 0.0),
-                                blurRadius: 0.0,
-                                spreadRadius: 0.0,
-                              ), //BoxShadow
-                            ],
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(model[index].categoryPath),
-                            )),
-                      ),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      Text(
-                        model[index].categoryName,
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ],
-    );
-  }
+    return  
+       Expanded(
+         child: ListView(children: [         
+                  Container( 
+                      decoration: BoxDecoration(
+                      color: tileColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                          child: ListTile(
+                          leading: imageData != null 
+                        ? CircleAvatar(backgroundImage: NetworkImage(imageData!),)
+                        : Icon(Icons.account_circle_rounded, size: 40, color: Colors.white),
+                          trailing: value != null ? Checkbox(value: value!, onChanged: valueOnChanged) : Icon(Icons.arrow_forward_ios, color: trailingColor ?? Colors.white),
+                          title: Text(title, style: TextStyle(color: textColor ?? Colors.white ),),
+                          subtitle: Text(subtitle, style: TextStyle(color: textColor ?? Colors.white ),),
+                          onTap: onPressed,
+                                 
+                        ),
+                    ),
+                  ]
+             ),
+       );
+    }
 }

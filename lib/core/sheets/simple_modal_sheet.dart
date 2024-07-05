@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void simpleShowModal(
     BuildContext context, double? height, Widget widget) async {
   await showModalBottomSheet(
-    isScrollControlled: true,
+    isScrollControlled: false,
     backgroundColor: Colors.white,
     context: context,
     builder: (BuildContext context) {

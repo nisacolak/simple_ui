@@ -1,19 +1,20 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:simple_ui/core/card/offer_card.dart';
+import 'package:simple_ui/core/list/simple_list.dart';
+import 'package:simple_ui/core/styles/color.dart';
 import 'package:simple_ui/simple_ui.dart';
 import 'package:flutter/services.dart' show rootBundle;  
 
-class CardsView extends StatefulWidget {
-  const CardsView({super.key});
+class ListsView extends StatefulWidget {
+   ListsView({super.key});
 
   @override
-  State<CardsView> createState() => _CardsViewState();
+  State<ListsView> createState() => _ListsViewState();
 }
 
-class _CardsViewState extends State<CardsView> {
-  String email = "";
+class _ListsViewState extends State<ListsView> {
+    String email = "";
   String image ="";
   String price="";
   String job="";
@@ -36,36 +37,37 @@ class _CardsViewState extends State<CardsView> {
       date = jsonResponse['date'];
     });
   }
- 
- 
-
 
 @override
   void initState() {
     loadJsonAsset();
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SimpleAppBar(appBarText: "Cards",  showBackArrow: true,),
+      appBar: SimpleAppBar(appBarText: "List Page", showBackArrow: true,),
       body: Center(
         child: Column(
-          children:[
-            CommentCard(title: fullName, description: education,footText: date,),
-            SizedBox(height: 10,),
-            EmailCard(email:  email, imagePath: image) ,
-            SizedBox(height: 10,),
-            Row(children: [OfferCard(price: price, description: offerSave, isMostPopular: true),
-            SizedBox(height: 10,),
-            OfferCard(price: price, description: "offer", isMostPopular: false)],),
-            SizedBox(height: 10,),
-            
-            SimpleCard(title: job, subtitle: fullName, imageUrl: image,)
+          children: [
+            SimpleCategoryList(model: categories , onPressed: () {
+              
+            },),SimpleList( tileColor: SimpleColors.primary,title: fullName , subtitle: job, onPressed: (){},  )
           ],
         ),
       ),
     );
   }
+}
+
+final List<CategoryModel> categories = [
+    CategoryModel(categoryName: "Gill Perocci", categoryPath: "https://images.unsplash.com/photo-1622295023576-e4fb6e9e8ba2?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+   
+];
+
+class CategoryModel {
+  final String categoryName;
+  final String categoryPath;
+
+  CategoryModel({required this.categoryName, required this.categoryPath});
 }

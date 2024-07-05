@@ -1,58 +1,42 @@
 import 'package:flutter/material.dart';
+
 import 'package:simple_ui/core/styles/color.dart';
 import 'package:simple_ui/core/styles/textstyle.dart';
 
-class WarningSnackBar{
-
-  static show (BuildContext context, {
-    String message = 'snackbar message',
-    
-    Duration duration = const Duration(seconds: 3),
-    
+class SimpleSnackBar{
+  
+  static void show ({
+    required BuildContext context,
+    required String message,
+    required Color bgColor,
+    Color? borderColor,
+    Color? messageColor,
+    required String actionText,
+    required VoidCallback snackBarAction
 
   }){
-   
-   
-    SnackBar snackBar = SnackBar(content: Container(
+    final snackBar = SnackBar(
+      content: Container(
 
-    width: double.infinity,
-    height: 70,
-    padding: EdgeInsets.symmetric(horizontal: 16),
-    decoration: BoxDecoration(
-      color: SimpleColors.primary.withAlpha(20), 
-      borderRadius: BorderRadius.circular(15),
-      border: Border.all(color: SimpleColors.primary.withAlpha(90,), width: 2),
-    ),
-    child: Row(
-      children: [
-        Container(
-          width: 40,
-          height: 40,
-          decoration: BoxDecoration(
-            color: SimpleColors.primary,
-            borderRadius: BorderRadius.circular(20),
-          ),
+      height: MediaQuery.of(context).size.height * .06,
+      child: Text(message, style: SimpleTextStyle.titleMedium(color: messageColor ?? Colors.black),)),
+      width: MediaQuery.of(context).size.width * .9,
+      
 
-       
-        ),
-        SizedBox(
-          width: 16,
-        ),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                
-                Text( message,style:  SimpleTextStyle.titleSmall(color: Colors.black)),
-              ],
-            ),
-          ),
-     )])));
-       
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    
-  }
-}
+      backgroundColor: bgColor,
+      behavior: SnackBarBehavior.floating,
+      clipBehavior: Clip.hardEdge,
+      shape: RoundedRectangleBorder(
+          side: BorderSide(color: borderColor ?? SimpleColors.primary ),
+          borderRadius: new BorderRadius.all(new Radius.circular(12))),
+      action: SnackBarAction(label: actionText, textColor: messageColor  ?? Colors.black , onPressed: snackBarAction ),
+    );
+
+  
+
+  
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+  
+
+}}

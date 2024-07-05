@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_ui/core/styles/color.dart';
+
 import 'package:simple_ui/core/styles/textstyle.dart';
 
 class CustomDialog extends StatelessWidget {
@@ -18,7 +18,7 @@ class CustomDialog extends StatelessWidget {
     
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12),),
       child: Container(
-       padding: EdgeInsets.all(20),
+       padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,

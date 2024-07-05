@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:simple_ui/core/styles/textstyle.dart';
 
-class TypographyPage extends StatelessWidget {
-   TypographyPage({super.key});
+class TypographyView extends StatelessWidget {
+   TypographyView({super.key});
 
   @override
   Widget build(BuildContext context) {

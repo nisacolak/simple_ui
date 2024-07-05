@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_ui/core/styles/textstyle.dart';
 
 class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget{
-  final Widget appBarText;
+  final String appBarText;
   final IconData? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
@@ -16,7 +16,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget{
     leading: showBackArrow 
     ? IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back))
     : leadingIcon != null ? IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon)) : null ,
-    title: appBarText,
+    title: Text(appBarText),
     actions: actions,
     ),);
   }
