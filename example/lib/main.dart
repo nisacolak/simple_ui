@@ -1,3 +1,5 @@
+import 'package:example/pages/appbar_view.dart';
+import 'package:example/pages/button_view.dart';
 import 'package:example/pages/card_view.dart';
 import 'package:example/pages/dialog_view.dart';
 import 'package:example/pages/lists_view.dart';
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: SimpleTheme.lightTheme(), 
       darkTheme: SimpleTheme.darkTheme(),
+    
       home: HomeWidget(),
     );
   }
@@ -40,8 +43,7 @@ class HomeWidget extends StatelessWidget {
         appBar:  PreferredSize(preferredSize: Size.fromHeight(55),
       
       child:
-        SearchAppBar( taptoProfile: () {  }, avatar: 
-        CircleAvatar(backgroundColor: Colors.white,), taptoBack: () {  },
+        SearchAppBar( taptoProfile: () {  }, taptoBack: () {  },
 
           
           )),
@@ -87,9 +89,19 @@ class HomeWidget extends StatelessWidget {
           SimpleButton(text: "Lists", onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => ListsView()),
             );
-          },)
+          },),
+           SizedBox(height: 10,),
+          SimpleButton(text: "Buttons", onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ButtonsView()),
+            );
+          },),
+           SizedBox(height: 10,),
+          SimpleButton(text: "Appbar", onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AppBarView()),
+            );
+          },),
           
-          
+        
             ],
           ),
         ),

@@ -70,7 +70,7 @@ static TextTheme mainTextTheme = TextTheme(
 
   static TextStyle headline({
  Color? color,
-    FontWeight? fontWeight = FontWeight.w500,
+    FontWeight? fontWeight = FontWeight.w400,
     TextDecoration? decoration,
   }){
     return _style(

@@ -5,11 +5,11 @@ import 'package:simple_ui/simple_ui.dart';
 class SearchAppBar extends StatelessWidget {
   const SearchAppBar({
     super.key,
-   this.homeSearchController,required this.avatar, required this.taptoProfile,  required this.taptoBack,
+   this.homeSearchController,this.avatar, required this.taptoProfile,  required this.taptoBack,
   });
 
   final TextEditingController? homeSearchController;
-  final Widget avatar;
+  final ImageProvider? avatar;
   final Function() taptoProfile;
   final Function() taptoBack;
 
@@ -43,7 +43,7 @@ class SearchAppBar extends StatelessWidget {
           ),
           child: GestureDetector(
               onTap: taptoProfile,
-              child: avatar,
+              child: CircleAvatar(backgroundImage: avatar, backgroundColor: Colors.white,),
         ),),
         
       

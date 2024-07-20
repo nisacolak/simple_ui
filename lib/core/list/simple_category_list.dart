@@ -25,7 +25,6 @@ class SimpleCategoryList extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.18,
                         height: MediaQuery.of(context).size.height * 0.1,
                         decoration: BoxDecoration(
-                            
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.cover,
